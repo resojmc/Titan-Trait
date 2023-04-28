@@ -2,37 +2,54 @@
 import tkinter as tk
 import json
 
-# Initializes tkinter window and defines its dimensions and title. Also gets data from .json file
-root = tk.Tk()
-root.geometry("800x600")
-root.title("AOT Match")
-with open("Aot-Character-Match\Data.json") as f:
+# Initializes tkinter window and defines its dimensions and title. Also gets data.json file
+main = tk.Tk()
+main.geometry("320x600")
+main.title("AOT Test")
+main.resizable(False, False)
+with open("Aot-Character-Match\AOT-Character-Match\Data.json") as f:
     data = f.read()
 d = json.loads(data)
+logo_img = tk.PhotoImage(
+    file="Aot-Character-Match\AOT-Character-Match\logo.png")
 
-# Imports attack on titan logo
-logo_img = tk.PhotoImage(file="C:\Users\J\Documents\GitHub\Aot-Character-Match\logo.png")
 
-main_label = tk.Label(root, text="Character Personality Match", image=logo_img)
-main_label.place(x=200, y=200)
+def questions():
+    pass
 
-# Character personality types
-eren_yeager = d["Main Type"]["I"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["P"]
-mikasa_ackerman = d["Main Type"]["I"], d["Main Type"]["S"], d["Main Type"]["T"], d["Main Type"]["J"]
-armin_arlert = d["Main Type"]["I"], d["Main Type"]["N"], d["Main Type"]["F"], d["Main Type"]["J"]
-levi_ackerman = d["Main Type"]["I"], d["Main Type"]["S"], d["Main Type"]["T"], d["Main Type"]["P"]
-erwin_smith = d["Main Type"]["E"], d["Main Type"]["N"], d["Main Type"]["T"], d["Main Type"]["J"]
-annie_leonhart = d["Main Type"]["I"], d["Main Type"]["S"], d["Main Type"]["T"], d["Main Type"]["P"]
-hange_zoe = d["Main Type"]["E"], d["Main Type"]["N"], d["Main Type"]["T"], d["Main Type"]["P"]
-historia_reiss = d["Main Type"]["E"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["J"]
-founder_ymir = d["Main Type"]["I"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["J"]
-zeke_yeager = d["Main Type"]["I"], d["Main Type"]["N"], d["Main Type"]["T"], d["Main Type"]["P"]
-reiner_braun = d["Main Type"]["E"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["J"]
-bertholdt_hoover = d["Main Type"]["I"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["J"]
-connie_springer = d["Main Type"]["E"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["P"]
-grisha_yeager = d["Main Type"]["I"], d["Main Type"]["N"], d["Main Type"]["F"], d["Main Type"]["J"]
-carla_yeager = d["Main Type"]["E"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["J"]
-sasha_braus = d["Main Type"]["E"], d["Main Type"]["S"], d["Main Type"]["F"], d["Main Type"]["P"]
-jean_kirstein = d["Main Type"]["E"], d["Main Type"]["S"], d["Main Type"]["T"], d["Main Type"]["J"]
 
-root.mainloop()
+reset_button = tk.Button(main, text="reset", font=("Goth Titan", 14), width=6)
+reset_button.place(x=7, y=560)
+
+start_button = tk.Button(main, text="start", font=(
+    "Goth Titan", 14), width=6)
+start_button.place(x=60, y=560)
+
+next_button = tk.Button(main, text="next", font=("Goth Titan", 14), width=6)
+next_button.place(x=266, y=560)
+
+prev_button = tk.Button(main, text="prev", font=("Goth Titan", 14), width=6)
+prev_button.place(x=212, y=560)
+
+questions_main_label = tk.Label(
+    main, text=f"""-{d['Questions']['1']}-
+    
+    
+    """, font=("Goth Titan", 30))
+questions_main_label.place(x=40, y=160)
+
+answers_label_a = tk.Radiobutton(main, text=f"{d['Answers']['1']['a']}")
+answers_label_a.place(x=40, y=220)
+
+answers_label_b = tk.Radiobutton(main, text=f"{d['Answers']['1']['b']}")
+answers_label_b.place(x=40, y=250)
+
+
+main_label = tk.Label(main, image=logo_img)
+main_label.place(x=0, y=0)
+
+char_match_label = tk.Label(
+    main, text="personality test", font=("Goth Titan", 30))
+char_match_label.place(x=67, y=100)
+
+main.mainloop()
