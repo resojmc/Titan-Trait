@@ -1,6 +1,8 @@
 # Imports tkinter, json modules
 import json
 import tkinter as tk
+from PIL import ImageTk, Image
+import characterfunc
 
 # Initializes tkinter window and defines its dimensions and title. Also gets data.json file
 main = tk.Tk()
@@ -17,7 +19,11 @@ val_b = tk.IntVar()
 q = list(d["Questions"].values())
 a = list(d["Answers"].values())
 u = d["UserData"]
-images = list(d["images"].values())
+image_paths = list(d["images"].values())
+images = []
+for i in image_paths:
+    images.append(ImageTk.PhotoImage(Image.open(i)))
+    print(images)
 length = len(q)
 current_question_index = 0
 
@@ -49,7 +55,7 @@ def next_question():
     # Goes to next question
     global current_question_index
     current_question_index += 1
-    if current_question_index > length:
+    if current_question_index >= length:
         return result()
     question_text = q[current_question_index]
     answer_options = a[current_question_index]
@@ -80,8 +86,8 @@ def prev_question():
 
 
 def result():
-    global u
-    results_data_label.config(text=f"{u}")
+    result = characterfunc.char_match()
+    results_data_label.config(text=f"{result}")
 
 
 def reset():
@@ -97,6 +103,7 @@ def reset():
     answers_label_b.config(
         text=answer_options['b'], state='normal', variable=val_b, command=selection)
     questions_main_label.config(text=f"-{question_text}-")
+    results_data_label.config(text=f"")
 
 
 reset_button = tk.Button(main, text="reset", font=(
@@ -123,7 +130,7 @@ answers_label_b = tk.Checkbutton(
     main, variable=val_b, text=a[0]['b'], command=selection)
 answers_label_b.place(x=160, y=260, anchor="center")
 
-main_label = tk.Label(main, image=tk.PhotoImage(file=images[0]))
+main_label = tk.Label(main, image=images[0])
 main_label.place(x=160, y=50, anchor="center")
 
 char_match_label = tk.Label(
@@ -135,7 +142,7 @@ results_label = tk.Label(
 results_label.place(x=160, y=320, anchor="center")
 
 results_data_label = tk.Label(
-    main, text=f"", font=("Goth Titan", 5))
+    main, text=f"".lower(), font=("Ariel", 10))
 results_data_label.place(x=160, y=360, anchor="center")
 
 main.mainloop()
