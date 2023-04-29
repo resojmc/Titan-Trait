@@ -1,7 +1,7 @@
 # Imports tkinter, json modules
 import json
 import tkinter as tk
-
+import characters
 
 # Initializes tkinter window and defines its dimensions and title. Also gets data.json file
 main = tk.Tk()
@@ -11,6 +11,7 @@ main.resizable(False, False)
 with open("Aot-Character-Match\AOT-Character-Match\Data.json") as f:
     data = f.read()
 d = json.loads(data)
+imgs = characters.load_images(main)
 
 # Main variables
 val_a = tk.IntVar()
@@ -130,7 +131,7 @@ answers_label_b = tk.Checkbutton(
     main, variable=val_b, text=a[0]['b'], command=selection)
 answers_label_b.place(x=160, y=260, anchor="center")
 
-main_label = tk.Label(main, image=characters.logo_img)
+main_label = tk.Label(main, )
 main_label.place(x=160, y=50, anchor="center")
 
 char_match_label = tk.Label(
