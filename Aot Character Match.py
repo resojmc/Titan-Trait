@@ -86,8 +86,7 @@ def prev_question():
 
 
 def result():
-    result = characterfunc.char_match()
-    results_data_label.config(text=f"{result}")
+    results_data_label.config(text=f"{characterfunc.char_match(u)}")
 
 
 def reset():
