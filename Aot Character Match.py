@@ -1,7 +1,6 @@
 # Imports tkinter, json modules
 import json
 import tkinter as tk
-import characters
 
 # Initializes tkinter window and defines its dimensions and title. Also gets data.json file
 main = tk.Tk()
@@ -11,19 +10,16 @@ main.resizable(False, False)
 with open("Aot-Character-Match\AOT-Character-Match\Data.json") as f:
     data = f.read()
 d = json.loads(data)
-imgs = characters.load_images(main)
 
 # Main variables
 val_a = tk.IntVar()
 val_b = tk.IntVar()
 q = list(d["Questions"].values())
 a = list(d["Answers"].values())
+u = d["UserData"]
+images = list(d["images"].values())
 length = len(q)
 current_question_index = 0
-user_data = {"Q1": 0, "Q2": 0, "Q3": 0, "Q4": 0, "Q5": 0,
-             "Q6": 0, "Q7": 0, "Q8": 0, "Q9": 0, "Q10": 0,
-             "Q11": 0, "Q12": 0, "Q13": 0, "Q14": 0, "Q15": 0,
-             "Q16": 0, "Q17": 0, "Q18": 0, "Q19": 0, "Q20": 0, "Q21": 0}
 
 
 def question_num():
@@ -40,13 +36,13 @@ def question_num():
 
 def selection():
     # Tracks users answers and adds them to user data
-    global val_a, val_b, current_question_index, user_data
+    global val_a, val_b, current_question_index, u
     if val_a.get() == 1:
         val_b.set(0)
-        user_data[f"Q{current_question_index+1}"] = 1
+        u[f"Q{current_question_index+1}"] = 1
     elif val_b.get() == 1:
         val_a.set(0)
-        user_data[f"Q{current_question_index+1}"] = 2
+        u[f"Q{current_question_index+1}"] = 2
 
 
 def next_question():
@@ -84,8 +80,8 @@ def prev_question():
 
 
 def result():
-    global user_data
-    results_data_label.config(text=f"{user_data}")
+    global u
+    results_data_label.config(text=f"{u}")
 
 
 def reset():
@@ -104,12 +100,8 @@ def reset():
 
 
 reset_button = tk.Button(main, text="reset", font=(
-    "Goth Titan", 14), width=6, command=reset)
+    "Goth Titan", 14), width=14, command=reset)
 reset_button.place(x=7, y=560)
-
-start_button = tk.Button(main, text="start", font=(
-    "Goth Titan", 14), width=6)
-start_button.place(x=60, y=560)
 
 next_button = tk.Button(main, text="next", font=(
     "Goth Titan", 14), width=6, command=next_question)
@@ -131,7 +123,7 @@ answers_label_b = tk.Checkbutton(
     main, variable=val_b, text=a[0]['b'], command=selection)
 answers_label_b.place(x=160, y=260, anchor="center")
 
-main_label = tk.Label(main, )
+main_label = tk.Label(main, image=tk.PhotoImage(file=images[0]))
 main_label.place(x=160, y=50, anchor="center")
 
 char_match_label = tk.Label(
