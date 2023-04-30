@@ -23,7 +23,6 @@ image_paths = list(d["images"].values())
 images = []
 for i in image_paths:
     images.append(ImageTk.PhotoImage(Image.open(i)))
-    print(images)
 length = len(q)
 current_question_index = 0
 
@@ -86,7 +85,10 @@ def prev_question():
 
 
 def result():
-    results_data_label.config(text=f"{characterfunc.char_match(u)}")
+    results = characterfunc.char_match(u)
+    results_data_label.config(text=f"{results}")
+    img = characterfunc.char_likely(results, d["images"])
+    return img
 
 
 def reset():
@@ -141,7 +143,15 @@ results_label = tk.Label(
 results_label.place(x=160, y=320, anchor="center")
 
 results_data_label = tk.Label(
-    main, text=f"".lower(), font=("Ariel", 10))
-results_data_label.place(x=160, y=360, anchor="center")
+    main, text=f"", font=("Ariel", 13))
+results_data_label.place(x=250, y=360, anchor="center")
+
+char_data_label = tk.Label(
+    main, text=f"", font=("Ariel", 13))
+char_data_label.place(x=65, y=360, anchor="center")
+
+char_img_label = tk.Label(
+    main, image=images[f"{characterfunc.char_likely(result, d['images'])}"])
+char_img_label.place(x=83, y=450, width=150, height=150, anchor="center")
 
 main.mainloop()

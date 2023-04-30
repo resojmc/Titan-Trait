@@ -6,6 +6,7 @@ def char_match(user_data):
     with open("Aot-Character-Match\AOT-Character-Match\Data.json") as f:
         data = json.load(f)
 
+    global personality_type
     personality_type = []
     I, E, S, N, T, F, J, P = 0, 0, 0, 0, 0, 0, 0, 0
     if user_data["Q1"] or user_data["Q8"] or user_data["Q15"] == 1:
@@ -51,3 +52,21 @@ def char_match(user_data):
         personality_type.append("P")
 
     return personality_type
+
+
+def char_likely(personality_type, images):
+    global score, max_score
+    with open("Aot-Character-Match\AOT-Character-Match\Data.json") as f:
+        data = json.load(f)
+    max_score = -1
+    most_similar_char = ""
+    for char, char_data in data["Character PT"].items():
+        score = 0
+        for i in range(4):
+            if personality_type[i] == char_data[i]:
+                score += 1
+        if score > max_score:
+            max_score = score
+            most_similar_char = char
+    char_image = data["images"].get(most_similar_char)
+    return most_similar_char, char_image
