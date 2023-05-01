@@ -1,2 +1,491 @@
-{"Main Type": {"I": "Introvert", "E": "Extrovert", "S": "Sensing", "N": "Intuition", "T": "Thinking", "F": "Feeling", "J": "Judging", "P": "Perceiving"}, "Combination Type": {"INTJ": "The Architect", "INTP": "The Logician", "ENTJ": "The Commander", "ENTP": "The Debater", "INFJ": "The Advocate", "INFP": "The Mediator", "ENFJ": "The Protagonist", "ENFP": "The Campaigner", "ISTJ": "The Logistician", "ISFJ": "The Defender", "ESTJ": "The Executive", "ESFJ": "The Consol", "ISTP": "The Virtuoso", "ISFP": "The Adventurer", "ESTP": "The Entrepreneur", "ESFP": "The Entertainer"}, "Answers": {"1": {"a": "Interact with many, including strangers", "b": "Interact with a few, known to you"}, "2": {"a": "Realistic than speculative", "b": "Speculative than realistic"}, "3": {"a": "Have your 'head in the clouds'", "b": "Be 'In a rut'"}, "4": {"a": "Principles", "b": "Emotions"}, "5": {"a": "Convincing", "b": "Touching"}, "6": {"a": "To Deadlines", "b": "Just 'Whenever'"}, "7": {"a": "Rather carefully", "b": "Somewhat impulsively"}, "8": {"a": "Stay late, with increasing energy", "b": "Leave early, with decreased energy"}, "9": {"a": "Sensitive People", "b": "Imaginative People"}, "10": {"a": "What is actual", "b": "What is possible"}, "11": {"a": "Laws then circumstances", "b": "Circumstances than laws"}, "12": {"a": "Objective", "b": "Personal"}, "13": {"a": "Punctual", "b": "Leisurely"}, "14": {"a": "Incomplete", "b": "Completed"}, "15": {"a": "Keep up with whats going on", "b": "Fall behind on whats going on"}, "16": {"a": "Do it the usual way", "b": "Do it your own way"}, "17": {"a": "Say what they mean and mean what they say", "b": "Fabricate things in daily life"}, "18": {"a": "Consistency of thought", "b": "Harmonious human relationships"}, "19": {"a": "Logical Judgements", "b": "Valid Judgements"}, "20": {"a": "Settled and decided", "b": "Unsettled and Undecided"}, "21": {"a": "Serious and Determined", "b": "Easy Going"}}, "Character PT": {"Eren Yeager": "ISFP", "Mikasa Ackerman": "ISTJ", "Armin Arlert": "INFJ", "Levi Ackerman": "ISTP", "Erwin Smith": "ENTJ", "Annie Leonhart": "ISTP", "Hange Zoe": "ENTP", "Historia Reiss": "ESFJ", "Founder Ymir": "ISFJ", "Zeke Yeager": "INTP", "Reiner Braun": "ESFJ", "Bertholdt Hoover": "ISFJ", "Connie Springer": "ESFP", "Grisha Yeager": "INFJ", "Carla Yeager": "ESFJ", "Sasha Braus": "ESFP", "Jean Kirstein": "ESTJ"}, "Questions": {"1": "At a party do you: ", "2": "Are you more: ", "3": "Is it worse to: ", "4": "Are you more impressed by: ", "5": "Are more drawn toward the: ", "6": "Do you prefer to work: ", "7": "Do you tend to choose: ", "8": "At parties do you: ", "9": "Are you more attracted to: ", "10": "Are you more interested in: ", "11": "In judging others are you more swayed by: ", "12": "In approaching others is your inclination to be somewhat: ", "13": "Are you more: ", "14": "Does it bother you having things: ", "15": "In your social groups do you: ", "16": "In doing ordinary things are you more likely to: ", "17": "People Should: ", "18": "Which appeals to you more: ", "19": "Are you more comfortable in making: ", "20": "Do you want things: ", "21": "Would you say you are more: "}, "UserData": {"Q1": 0, "Q2": 0, "Q3": 0, "Q4": 0, "Q5": 0, "Q6": 0, "Q7": 0, "Q8": 0, "Q9": 0, "Q10": 0, "Q11": 0, "Q12": 0, "Q13": 0, "Q14": 0, "Q15": 0, "Q16": 0, "Q17": 0, "Q18": 0, "Q19": 0, "Q20": 0, "Q21": 0}, "images": {"logo": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\logo.png", "eren": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\eren.png", "mikasa": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\mikasa.png", "armin": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\armin.png", "levi": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\levi.png", "hange": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\hange.png", "connie": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\connie.png", "sasha": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\sasha.png", "jean": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\jean.png", "historia": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\historia.png", "reiner": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\reiner.png", "bertholdt": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\bertholdt.png", "annie": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\annie.png", "zeke": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\zeke.png"}}
-                                                                                                                                                                             
+{
+    "Main Type": {
+        "I": "Introvert",
+        "E": "Extrovert",
+        "S": "Sensing",
+        "N": "Intuition",
+        "T": "Thinking",
+        "F": "Feeling",
+        "J": "Judging",
+        "P": "Perceiving"
+    },
+    "Combination Type": {
+        "INTJ": "The Architect",
+        "INTP": "The Logician",
+        "ENTJ": "The Commander",
+        "ENTP": "The Debater",
+        "INFJ": "The Advocate",
+        "INFP": "The Mediator",
+        "ENFJ": "The Protagonist",
+        "ENFP": "The Campaigner",
+        "ISTJ": "The Logistician",
+        "ISFJ": "The Defender",
+        "ESTJ": "The Executive",
+        "ESFJ": "The Consol",
+        "ISTP": "The Virtuoso",
+        "ISFP": "The Adventurer",
+        "ESTP": "The Entrepreneur",
+        "ESFP": "The Entertainer"
+    },
+    "Answers": {
+        "1": {
+            "a": "Interact with many, including strangers",
+            "b": "Interact with a few, known to you"
+        },
+        "2": {
+            "a": "Realistic than speculative",
+            "b": "Speculative than realistic"
+        },
+        "3": {
+            "a": "Have your 'head in the clouds'",
+            "b": "Be 'In a rut'"
+        },
+        "4": {
+            "a": "Principles",
+            "b": "Emotions"
+        },
+        "5": {
+            "a": "Convincing",
+            "b": "Touching"
+        },
+        "6": {
+            "a": "To Deadlines",
+            "b": "Just 'Whenever'"
+        },
+        "7": {
+            "a": "Rather carefully",
+            "b": "Somewhat impulsively"
+        },
+        "8": {
+            "a": "Stay late, with increasing energy",
+            "b": "Leave early, with decreased energy"
+        },
+        "9": {
+            "a": "Sensitive People",
+            "b": "Imaginative People"
+        },
+        "10": {
+            "a": "What is actual",
+            "b": "What is possible"
+        },
+        "11": {
+            "a": "Laws then circumstances",
+            "b": "Circumstances than laws"
+        },
+        "12": {
+            "a": "Objective",
+            "b": "Personal"
+        },
+        "13": {
+            "a": "Punctual",
+            "b": "Leisurely"
+        },
+        "14": {
+            "a": "Incomplete",
+            "b": "Completed"
+        },
+        "15": {
+            "a": "Keep up with whats going on",
+            "b": "Fall behind on whats going on"
+        },
+        "16": {
+            "a": "Do it the usual way",
+            "b": "Do it your own way"
+        },
+        "17": {
+            "a": "Say what they mean and mean what they say",
+            "b": "Fabricate things in daily life"
+        },
+        "18": {
+            "a": "Consistency of thought",
+            "b": "Harmonious human relationships"
+        },
+        "19": {
+            "a": "Logical Judgements",
+            "b": "Valid Judgements"
+        },
+        "20": {
+            "a": "Settled and decided",
+            "b": "Unsettled and Undecided"
+        },
+        "21": {
+            "a": "Serious and Determined",
+            "b": "Easy Going"
+        },
+        "22": {
+            "a": "Rarely question that it will all be said",
+            "b": "Rehearse what youll say"
+        },
+        "23": {
+            "a": "Speak for themselves",
+            "b": "Illustrate principles"
+        },
+        "24": {
+            "a": "somewhat annoying",
+            "b": "rather fascinating"
+        },
+        "25": {
+            "a": "a cool headed person",
+            "b": "a warm hearted person"
+        },
+        "26": {
+            "a": "unjust",
+            "b": "merciless"
+        },
+        "27": {
+            "a": "by careful selection and choice",
+            "b": "randomly and by chance"
+        },
+        "28": {
+            "a": "having purchased",
+            "b": "having the option to buy"
+        },
+        "29": {
+            "a": "initiate conversation",
+            "b": "wait to be approached"
+        },
+        "30": {
+            "a": "rarely questionable",
+            "b": "frequently questionable"
+        },
+        "31": {
+            "a": "make themselves useful enough",
+            "b": "exercise their fantasy enough"
+        },
+        "32": {
+            "a": "standards",
+            "b": "feelings"
+        },
+        "33": {
+            "a": "firm than gentle",
+            "b": "gentle than firm"
+        },
+        "34": {
+            "a": "the ability to organize and be methodical",
+            "b": "the ability to adapt and make do"
+        },
+        "35": {
+            "a": "infinite",
+            "b": "open-minded"
+        },
+        "36": {
+            "a": "stimulate and energize you",
+            "b": "tax your reserves"
+        },
+        "37": {
+            "a": "a practical sort of person",
+            "b": "a fanciful sort of person"
+        },
+        "38": {
+            "a": "see how others are useful",
+            "b": "see how others see"
+        },
+        "39": {
+            "a": "to discuss an issue thoroughly",
+            "b": "to arrive at agreement on an issue"
+        },
+        "40": {
+            "a": "your head",
+            "b": "your heart"
+        },
+        "41": {
+            "a": "contracted",
+            "b": "done on a casual basis"
+        },
+        "42": {
+            "a": "the orderly",
+            "b": "whatever turns up"
+        },
+        "43": {
+            "a": "many friends with brief contact",
+            "b": "a few friends with more lengthy contact"
+        },
+        "44": {
+            "a": "facts",
+            "b": "principles"
+        },
+        "45": {
+            "a": "production and distribution",
+            "b": "design and research"
+        },
+        "46": {
+            "a": "“There is a very logical person.”",
+            "b": "“There is a very sentimental person.”"
+        },
+        "47": {
+            "a": "unwavering",
+            "b": "devoted"
+        },
+        "48": {
+            "a": "final and unalterable statement",
+            "b": "tentative and preliminary statement"
+        },
+        "49": {
+            "a": "after a decision",
+            "b": "before a decision"
+        },
+        "50": {
+            "a": "speak easily and at length with strangers",
+            "b": "find little to say to strangers"
+        },
+        "51": {
+            "a": "experience",
+            "b": "hunch"
+        },
+        "52": {
+            "a": "more practical than ingenious",
+            "b": "more ingenious than practical"
+        },
+        "53": {
+            "a": "clear reason",
+            "b": "strong feeling"
+        },
+        "54": {
+            "a": "fair-minded",
+            "b": "sympathetic"
+        },
+        "55": {
+            "a": "make sure things are arranged",
+            "b": "just let things happen"
+        },
+        "56": {
+            "a": "re-negotiable",
+            "b": "random and circumstantial"
+        },
+        "57": {
+            "a": "hasten to get to it first",
+            "b": "hope someone else will answer"
+        },
+        "58": {
+            "a": "a strong sense of reality",
+            "b": "a vivid imagination"
+        },
+        "59": {
+            "a": "fundamentals",
+            "b": "overtones"
+        },
+        "60": {
+            "a": "to be too passionate",
+            "b": "to be too objective"
+        },
+        "61": {
+            "a": "hard-headed",
+            "b": "soft-hearted"
+        },
+        "62": {
+            "a": "the structured and scheduled",
+            "b": "the unstructured and unscheduled"
+        },
+        "63": {
+            "a": "routinized than whimsical",
+            "b": "whimsical than routinized"
+        },
+        "64": {
+            "a": "easy to approach",
+            "b": "somewhat reserved"
+        },
+        "65": {
+            "a": "the more literal",
+            "b": "the more figurative"
+        },
+        "66": {
+            "a": "identify with others",
+            "b": "utilize others"
+        },
+        "67": {
+            "a": "clarity of reason",
+            "b": "strength of compassion"
+        },
+        "68": {
+            "a": "being indiscriminate",
+            "b": "being critical"
+        },
+        "69": {
+            "a": "planned event",
+            "b": "unplanned event"
+        },
+        "70": {
+            "a": "deliberate than spontaneous",
+            "b": "spontaneous than deliberate"
+        }
+    },
+    "Character PT": {
+        "Eren Yeager": "ISFP",
+        "Mikasa Ackerman": "ISTJ",
+        "Armin Arlert": "INFJ",
+        "Levi Ackerman": "ISTP",
+        "Erwin Smith": "ENTJ",
+        "Annie Leonhart": "ISTP",
+        "Hange Zoe": "ENTP",
+        "Historia Reiss": "ESFJ",
+        "Founder Ymir": "ISFJ",
+        "Zeke Yeager": "INTP",
+        "Reiner Braun": "ESFJ",
+        "Bertholdt Hoover": "ISFJ",
+        "Connie Springer": "ESFP",
+        "Grisha Yeager": "INFJ",
+        "Carla Yeager": "ESFJ",
+        "Sasha Braus": "ESFP",
+        "Jean Kirstein": "ESTJ"
+    },
+    "Questions": {
+        "1": "At a party do you: ",
+        "2": "Are you more: ",
+        "3": "Is it worse to: ",
+        "4": "Are you more impressed by: ",
+        "5": "Are more drawn toward the: ",
+        "6": "Do you prefer to work: ",
+        "7": "Do you tend to choose: ",
+        "8": "At parties do you: ",
+        "9": "Are you more attracted to: ",
+        "10": "Are you more interested in: ",
+        "11": "In judging others are you more swayed by: ",
+        "12": "In approaching others is your inclination to be somewhat: ",
+        "13": "Are you more: ",
+        "14": "Does it bother you having things: ",
+        "15": "In your social groups do you: ",
+        "16": "In doing ordinary things are you more likely to: ",
+        "17": "People Should: ",
+        "18": "Which appeals to you more: ",
+        "19": "Are you more comfortable in making: ",
+        "20": "Do you want things: ",
+        "21": "Would you say you are more: ",
+        "22": "In Phoning do you: ",
+        "23": "Facts: ",
+        "24": "Are visionaries: ",
+        "25": "Are you more often: ",
+        "26": "Is it worse to be: ",
+        "27": "Should one usually let events occur:",
+        "28": "Do you feel better about:",
+        "29": "In company do you:",
+        "30": "Common sense is:",
+        "31": "Children often do not:",
+        "32": "In making decisions do you feel more comfortable with:",
+        "33": "Are you more:",
+        "34": "Which is more admirable:",
+        "35": "Do you put more value on:",
+        "36": "Does new and non-routine interaction with others:",
+        "37": "Are you more frequently:",
+        "38": "Are you more likely to:",
+        "39": "Which is more satisfying:",
+        "40": "Which rules you more:",
+        "41": "Are you more comfortable with work that is:",
+        "42": "Do you tend to look for:",
+        "43": "Do you prefer:",
+        "44": "Do you go more by:",
+        "45": "Are you more interested in:",
+        "46": "Which is more of a compliment:",
+        "47": "Do you value in yourself more that you are:",
+        "48": "Do you more often prefer the:",
+        "49": "Are you more comfortable:",
+        "50": "Do you:",
+        "51": "Are you more likely to trust your:",
+        "52": "Do you feel:",
+        "53": "Which person is more to be complimented:",
+        "54": "Are you inclined more to be:",
+        "55": "Is it preferable mostly to:",
+        "56": "In relationships should most things be:",
+        "57": "When the phone rings do you:",
+        "58": "Do you prize more in yourself:",
+        "59": "Are you drawn more to:",
+        "60": "Which seems the greater error:",
+        "61": "Do you see yourself as basically:",
+        "62": "Which situation appeals to you more:",
+        "63": "Are you a person that is more:",
+        "64": "Are you more inclined to be:",
+        "65": "In writings do you prefer:",
+        "66": "Is it harder for you to:",
+        "67": "Which do you wish more for yourself:",
+        "68": "Which is the greater fault:",
+        "69": "Do you prefer the:",
+        "70": "Do you tend to be more: "
+    },
+    "UserData": {
+        "Q1": 0,
+        "Q2": 0,
+        "Q3": 0,
+        "Q4": 0,
+        "Q5": 0,
+        "Q6": 0,
+        "Q7": 0,
+        "Q8": 0,
+        "Q9": 0,
+        "Q10": 0,
+        "Q11": 0,
+        "Q12": 0,
+        "Q13": 0,
+        "Q14": 0,
+        "Q15": 0,
+        "Q16": 0,
+        "Q17": 0,
+        "Q18": 0,
+        "Q19": 0,
+        "Q20": 0,
+        "Q21": 0,
+        "Q22": 0,
+        "Q23": 0,
+        "Q24": 0,
+        "Q25": 0,
+        "Q26": 0,
+        "Q27": 0,
+        "Q28": 0,
+        "Q29": 0,
+        "Q30": 0,
+        "Q31": 0,
+        "Q32": 0,
+        "Q33": 0,
+        "Q34": 0,
+        "Q35": 0,
+        "Q36": 0,
+        "Q37": 0,
+        "Q38": 0,
+        "Q39": 0,
+        "Q40": 0,
+        "Q41": 0,
+        "Q42": 0,
+        "Q43": 0,
+        "Q44": 0,
+        "Q45": 0,
+        "Q46": 0,
+        "Q47": 0,
+        "Q48": 0,
+        "Q49": 0,
+        "Q50": 0,
+        "Q51": 0,
+        "Q52": 0,
+        "Q53": 0,
+        "Q54": 0,
+        "Q55": 0,
+        "Q56": 0,
+        "Q57": 0,
+        "Q58": 0,
+        "Q59": 0,
+        "Q60": 0,
+        "Q61": 0,
+        "Q62": 0,
+        "Q63": 0,
+        "Q64": 0,
+        "Q65": 0,
+        "Q66": 0,
+        "Q67": 0,
+        "Q68": 0,
+        "Q69": 0,
+        "Q70": 0
+    },
+    "images": {
+        "logo": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\logo.png",
+        "Eren Yeager": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\eren.png",
+        "Mikasa Ackerman": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\mikasa.png",
+        "Armin Arlert": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\armin.png",
+        "Levi Ackerman": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\levi.png",
+        "Hange Zoe": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\hange.png",
+        "Connie Springer": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\connie.png",
+        "Sasha Blause": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\sasha.png",
+        "Jean Kiristein": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\jean.png",
+        "Historia": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\historia.png",
+        "Reiner Braun": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\reiner.png",
+        "Bertholdt Hoover": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\bertholdt.png",
+        "Annie Leonhart": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\annie.png",
+        "Zeke Yeager": "C:\\Users\\J\\Documents\\GitHub\\Aot-Character-Match\\character-imgs\\zeke.png"
+    }
+}

@@ -9,7 +9,7 @@ main = tk.Tk()
 main.geometry("320x600")
 main.title("AOT Test")
 main.resizable(False, False)
-with open("Aot-Character-Match\AOT-Character-Match\Data.json") as f:
+with open("Aot-Character-Match\AOT-Character-Match\Data.json", encoding="utf-8") as f:
     data = f.read()
 d = json.loads(data)
 
@@ -65,6 +65,7 @@ def next_question():
     answers_label_b.config(
         text=answer_options['b'], state='normal', variable=val_b, command=selection)
     questions_main_label.config(text=f"-{question_text}-")
+    question_counter.config(text=f"{current_question_index}/70")
 
 
 def prev_question():
@@ -82,13 +83,16 @@ def prev_question():
     answers_label_b.config(
         text=answer_options['b'], state='normal', variable=val_b, command=selection)
     questions_main_label.config(text=f"-{question_text}-")
+    question_counter.config(text=f"{current_question_index}/70")
 
 
 def result():
-    results = characterfunc.char_match(u)
-    results_data_label.config(text=f"{results}")
-    img = characterfunc.char_likely(results, d["images"])
-    return img
+    global result
+    result = characterfunc.char_match(u)
+    results_data_label.config(text=f"{result}")
+    for char in d["Character PT"].values():
+        if result == char:
+            char_match_label.config(image=images[d["Character PT"][char]])
 
 
 def reset():
@@ -105,7 +109,12 @@ def reset():
         text=answer_options['b'], state='normal', variable=val_b, command=selection)
     questions_main_label.config(text=f"-{question_text}-")
     results_data_label.config(text=f"")
+    question_counter.config(text=f"{current_question_index-1}/70")
 
+
+question_counter = tk.Label(
+    main, text=f"{current_question_index-1}/70", font=("Goth Titan", 16))
+question_counter.place(x=156, y=577, anchor="center")
 
 reset_button = tk.Button(main, text="reset", font=(
     "Goth Titan", 14), width=14, command=reset)
@@ -134,24 +143,19 @@ answers_label_b.place(x=160, y=260, anchor="center")
 main_label = tk.Label(main, image=images[0])
 main_label.place(x=160, y=50, anchor="center")
 
-char_match_label = tk.Label(
+personality_label = tk.Label(
     main, text="personality test", font=("Goth Titan", 30))
-char_match_label.place(x=160, y=120, anchor="center")
+personality_label.place(x=160, y=120, anchor="center")
+
+char_match_label = tk.Label(main, )
+char_match_label.place(x=0, y=400)
 
 results_label = tk.Label(
     main, text="results", font=("Goth Titan", 30))
 results_label.place(x=160, y=320, anchor="center")
 
 results_data_label = tk.Label(
-    main, text=f"", font=("Ariel", 13))
-results_data_label.place(x=250, y=360, anchor="center")
-
-char_data_label = tk.Label(
-    main, text=f"", font=("Ariel", 13))
-char_data_label.place(x=65, y=360, anchor="center")
-
-char_img_label = tk.Label(
-    main, image=images[f"{characterfunc.char_likely(result, d['images'])}"])
-char_img_label.place(x=83, y=450, width=150, height=150, anchor="center")
+    main, text=f"".lower(), font=("Ariel", 10))
+results_data_label.place(x=160, y=360, anchor="center")
 
 main.mainloop()
