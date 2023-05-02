@@ -2,7 +2,6 @@
 import json
 import tkinter as tk
 from PIL import ImageTk, Image
-import characterfunc
 
 # Initializes tkinter window and defines its dimensions and title. Also gets data.json file
 main = tk.Tk()
@@ -25,6 +24,7 @@ for i in image_paths:
     images.append(ImageTk.PhotoImage(Image.open(i)))
 length = len(q)
 current_question_index = 0
+print(u)
 
 
 def question_num():
@@ -86,9 +86,60 @@ def prev_question():
     question_counter.config(text=f"{current_question_index}/70")
 
 
+def char_match():
+    I = 0
+    E = 0
+    S = 0
+    N = 0
+    T = 0
+    F = 0
+    J = 0
+    P = 0
+    personality_type = []
+    for i in range(1, 71):
+        if i in [1, 8, 15, 22, 29, 36, 43, 50, 57, 64]:
+            if u[f"Q{i}"] == "1":
+                E += 1
+            elif u[f"Q{i}"] == "2":
+                I += 1
+        elif i in [2, 9, 14, 16, 23, 27, 30, 37, 41, 44, 51, 58, 62, 65]:
+            if u[f"Q{i}"] == "1":
+                S += 1
+            elif u[f"Q{i}"] == "2":
+                N += 1
+        elif i in [3, 5, 6, 7, 10, 13, 17, 24, 28, 31, 33, 34, 38, 40, 42, 45, 47, 48, 52, 55, 56, 59, 61, 63, 66, 68, 69, 70]:
+            if u[f"Q{i}"] == "1":
+                T += 1
+            elif u[f"Q{i}"] == "2":
+                F += 1
+        elif i in [4, 11, 12, 18, 19, 20, 25, 26, 32, 35, 39, 46, 49, 53, 54, 60, 67]:
+            if u[f"Q{i}"] == "1":
+                J += 1
+            elif u[f"Q{i}"] == "2":
+                P += 1
+    if I > E:
+        personality_type.append("I")
+    elif E > I:
+        personality_type.append("E")
+    if S > N:
+        personality_type.append("S")
+    elif N > S:
+        personality_type.append("N")
+    if T > F:
+        personality_type.append("T")
+    elif F > T:
+        personality_type.append("F")
+    if J > P:
+        personality_type.append("J")
+    elif P > J:
+        personality_type.append("P")
+
+    return personality_type
+
+
 def result():
     global result
-    result = characterfunc.char_match(u)
+    result = char_match()
     results_data_label.config(text=f"{result}")
     for char in d["Character PT"].values():
         if result == char:
@@ -109,11 +160,11 @@ def reset():
         text=answer_options['b'], state='normal', variable=val_b, command=selection)
     questions_main_label.config(text=f"-{question_text}-")
     results_data_label.config(text=f"")
-    question_counter.config(text=f"{current_question_index-1}/70")
+    question_counter.config(text=f"{current_question_index}/70")
 
 
 question_counter = tk.Label(
-    main, text=f"{current_question_index-1}/70", font=("Goth Titan", 16))
+    main, text=f"{current_question_index}/70", font=("Goth Titan", 16))
 question_counter.place(x=156, y=577, anchor="center")
 
 reset_button = tk.Button(main, text="reset", font=(
