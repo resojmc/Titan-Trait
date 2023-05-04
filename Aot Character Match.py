@@ -17,14 +17,12 @@ val_a = tk.IntVar()
 val_b = tk.IntVar()
 q = list(d["Questions"].values())
 a = list(d["Answers"].values())
-u = d["UserData"]
 image_paths = list(d["images"].values())
 images = []
 for i in image_paths:
     images.append(ImageTk.PhotoImage(Image.open(i)))
 length = len(q)
 current_question_index = 0
-print(u)
 
 
 def question_num():
@@ -41,13 +39,63 @@ def question_num():
 
 def selection():
     # Tracks users answers and adds them to user data
-    global val_a, val_b, current_question_index, u
+    global val_a, val_b, current_question_index, d
     if val_a.get() == 1:
         val_b.set(0)
-        u[f"Q{current_question_index+1}"] = 1
+        d["UserData"][f"Q{current_question_index+1}"] = 1
     elif val_b.get() == 1:
         val_a.set(0)
-        u[f"Q{current_question_index+1}"] = 2
+        d["UserData"][f"Q{current_question_index+1}"] = 2
+
+
+def char_match():
+    global d
+    personality_type = []
+    for i in range(1, 71):
+        if i in [1, 8, 15, 22, 29, 36, 43, 50, 57, 64]:
+            if d["UserData"][f"Q{i}"] == 1:
+                d["UserPT"]["E"] += 1
+            elif d["UserData"][f"Q{i}"] == 2:
+                d["UserPT"]["I"] += 1
+        elif i in [2, 9, 14, 16, 23, 27, 30, 37, 41, 44, 51, 58, 62, 65]:
+            if d["UserData"][f"Q{i}"] == 1:
+                d["UserPT"]["S"] += 1
+            elif d["UserData"][f"Q{i}"] == 2:
+                d["UserPT"]["N"] += 1
+        elif i in [3, 5, 6, 7, 10, 13, 17, 24, 28, 31, 33, 34, 38, 40, 42, 45, 47, 48, 52, 55, 56, 59, 61, 63, 66, 68, 69, 70]:
+            if d["UserData"][f"Q{i}"] == 1:
+                d["UserPT"]["T"] += 1
+            elif d["UserData"][f"Q{i}"] == 2:
+                d["UserPT"]["F"] += 1
+        elif i in [4, 11, 12, 18, 19, 20, 25, 26, 32, 35, 39, 46, 49, 53, 54, 60, 67]:
+            if d["UserData"][f"Q{i}"] == 1:
+                d["UserPT"]["J"] += 1
+            elif d["UserData"][f"Q{i}"] == 2:
+                d["UserPT"]["P"] += 1
+
+    if d["UserPT"]["I"] > d["UserPT"]["E"]:
+        personality_type.append("I")
+    else:
+        personality_type.append("E")
+
+    if d["UserPT"]["S"] > d["UserPT"]["N"]:
+        personality_type.append("S")
+    else:
+        personality_type.append("N")
+
+    if d["UserPT"]["T"] > d["UserPT"]["F"]:
+        personality_type.append("T")
+    else:
+        personality_type.append("F")
+
+    if d["UserPT"]["J"] > d["UserPT"]["P"]:
+        personality_type.append("J")
+    else:
+        personality_type.append("P")
+
+    personality_type = "".join(personality_type)
+
+    return personality_type
 
 
 def next_question():
@@ -55,95 +103,59 @@ def next_question():
     global current_question_index
     current_question_index += 1
     if current_question_index >= length:
-        return result()
-    question_text = q[current_question_index]
-    answer_options = a[current_question_index]
-    val_a.set(0)
-    val_b.set(0)
-    answers_label_a.config(
-        text=answer_options['a'], state='normal', variable=val_a, command=selection)
-    answers_label_b.config(
-        text=answer_options['b'], state='normal', variable=val_b, command=selection)
-    questions_main_label.config(text=f"-{question_text}-")
-    question_counter.config(text=f"{current_question_index}/70")
+        results = char_match()
+        results_data_label.config(
+            text=f"{results}".lower(), font=("Goth Titan", 25))
+        for char in d["Character PT"].values():
+            if results == char:
+                vals = list(d["Character PT"].values())
+                fullname = list(d["Full Name"].values())
+                position = vals.index(char)
+                char_match_label.config(
+                    image=images[position], height=150, width=150)
+                char_name.config(
+                    text=f"{fullname[position]}".lower(), font=("Goth Titan", 25))
+    else:
+        question_text = q[current_question_index]
+        answer_options = a[current_question_index]
+        val_a.set(0)
+        val_b.set(0)
+        answers_label_a.config(
+            text=answer_options['a'], state='normal', variable=val_a, command=selection)
+        answers_label_b.config(
+            text=answer_options['b'], state='normal', variable=val_b, command=selection)
+        questions_main_label.config(text=f"-{question_text}-")
+        question_counter.config(text=f"{current_question_index}/70")
 
 
 def prev_question():
     # Goes to previous question
     global current_question_index
     current_question_index -= 1
-    if current_question_index > length:
-        return result()
-    question_text = q[current_question_index]
-    answer_options = a[current_question_index]
-    val_a.set(0)
-    val_b.set(0)
-    answers_label_a.config(
-        text=answer_options['a'], state='normal', variable=val_a, command=selection)
-    answers_label_b.config(
-        text=answer_options['b'], state='normal', variable=val_b, command=selection)
-    questions_main_label.config(text=f"-{question_text}-")
-    question_counter.config(text=f"{current_question_index}/70")
-
-
-def char_match():
-    I = 0
-    E = 0
-    S = 0
-    N = 0
-    T = 0
-    F = 0
-    J = 0
-    P = 0
-    personality_type = []
-    for i in range(1, 71):
-        if i in [1, 8, 15, 22, 29, 36, 43, 50, 57, 64]:
-            if u[f"Q{i}"] == "1":
-                E += 1
-            elif u[f"Q{i}"] == "2":
-                I += 1
-        elif i in [2, 9, 14, 16, 23, 27, 30, 37, 41, 44, 51, 58, 62, 65]:
-            if u[f"Q{i}"] == "1":
-                S += 1
-            elif u[f"Q{i}"] == "2":
-                N += 1
-        elif i in [3, 5, 6, 7, 10, 13, 17, 24, 28, 31, 33, 34, 38, 40, 42, 45, 47, 48, 52, 55, 56, 59, 61, 63, 66, 68, 69, 70]:
-            if u[f"Q{i}"] == "1":
-                T += 1
-            elif u[f"Q{i}"] == "2":
-                F += 1
-        elif i in [4, 11, 12, 18, 19, 20, 25, 26, 32, 35, 39, 46, 49, 53, 54, 60, 67]:
-            if u[f"Q{i}"] == "1":
-                J += 1
-            elif u[f"Q{i}"] == "2":
-                P += 1
-    if I > E:
-        personality_type.append("I")
-    elif E > I:
-        personality_type.append("E")
-    if S > N:
-        personality_type.append("S")
-    elif N > S:
-        personality_type.append("N")
-    if T > F:
-        personality_type.append("T")
-    elif F > T:
-        personality_type.append("F")
-    if J > P:
-        personality_type.append("J")
-    elif P > J:
-        personality_type.append("P")
-
-    return personality_type
-
-
-def result():
-    global result
-    result = char_match()
-    results_data_label.config(text=f"{result}")
-    for char in d["Character PT"].values():
-        if result == char:
-            char_match_label.config(image=images[d["Character PT"][char]])
+    if current_question_index >= length:
+        results = char_match()
+        results_data_label.config(
+            text=f"{results}".lower(), font=("Goth Titan", 25))
+        for char in d["Character PT"].values():
+            if results == char:
+                vals = list(d["Character PT"].values())
+                fullname = list(d["Full Name"].values())
+                position = vals.index(char)
+                char_match_label.config(
+                    image=images[position], height=150, width=150)
+                char_name.config(
+                    text=f"{fullname[position]}".lower(), font=("Goth Titan", 25))
+    else:
+        question_text = q[current_question_index]
+        answer_options = a[current_question_index]
+        val_a.set(0)
+        val_b.set(0)
+        answers_label_a.config(
+            text=answer_options['a'], state='normal', variable=val_a, command=selection)
+        answers_label_b.config(
+            text=answer_options['b'], state='normal', variable=val_b, command=selection)
+        questions_main_label.config(text=f"-{question_text}-")
+        question_counter.config(text=f"{current_question_index}/70")
 
 
 def reset():
@@ -199,14 +211,21 @@ personality_label = tk.Label(
 personality_label.place(x=160, y=120, anchor="center")
 
 char_match_label = tk.Label(main, )
-char_match_label.place(x=0, y=400)
+char_match_label.place(x=100, y=430, anchor="center")
+
+char_name = tk.Label(main, text="")
+char_name.place(x=100, y=530, anchor="center")
 
 results_label = tk.Label(
     main, text="results", font=("Goth Titan", 30))
 results_label.place(x=160, y=320, anchor="center")
 
+type_label = tk.Label(
+    main, text="your type:", font=("Goth Titan", 25))
+type_label.place(x=250, y=360, anchor="center")
+
 results_data_label = tk.Label(
-    main, text=f"".lower(), font=("Ariel", 10))
-results_data_label.place(x=160, y=360, anchor="center")
+    main, text=f"".lower(), font=("Goth Titan", 25))
+results_data_label.place(x=250, y=400, anchor="center")
 
 main.mainloop()
