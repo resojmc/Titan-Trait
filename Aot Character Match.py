@@ -12,7 +12,7 @@ with open("Aot-Character-Match\AOT-Character-Match\Data.json", encoding="utf-8")
     data = f.read()
 d = json.loads(data)
 
-# Main variables
+# Main variables, Image path and list
 val_a = tk.IntVar()
 val_b = tk.IntVar()
 q = list(d["Questions"].values())
@@ -49,6 +49,7 @@ def selection():
 
 
 def char_match():
+    # Takes users answers (d["UserData"]) and returns their 'MBTI' personality type
     global d
     personality_type = []
     for i in range(1, 71):
@@ -99,7 +100,7 @@ def char_match():
 
 
 def next_question():
-    # Goes to next question
+    # Goes to next question, and returns character match for user
     global current_question_index
     current_question_index += 1
     if current_question_index >= length:
@@ -129,7 +130,7 @@ def next_question():
 
 
 def prev_question():
-    # Goes to previous question
+    # Goes to previous question, and returns character match for user
     global current_question_index
     current_question_index -= 1
     if current_question_index >= length:
@@ -175,6 +176,7 @@ def reset():
     question_counter.config(text=f"{current_question_index}/70")
 
 
+# All buttons and labels used
 question_counter = tk.Label(
     main, text=f"{current_question_index}/70", font=("Goth Titan", 16))
 question_counter.place(x=156, y=577, anchor="center")
